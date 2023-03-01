@@ -9,7 +9,7 @@ require('dotenv').config();
 
 const app = express();
 
-const port = 80;
+
 
 
 app.use(cors());
@@ -35,7 +35,11 @@ const exceriseRoutes = require('./routes/exercises');
 app.use('/users',userRoutes);
 app.use('/exercises', exceriseRoutes);
 
+app.get("/health",(req, res) => {
+    res.send("Health check");
+});
 
+const port = process.env.PORT || 3000;
 
 
 app.listen(port,() => {
